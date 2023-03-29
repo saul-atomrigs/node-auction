@@ -86,6 +86,7 @@ router.post(
 
 router.get("/good/:id", isLoggedIn, async (req, res, next) => {
   try {
+    // 상품(good)과 기존 입찰 정보(auction)를 가져온다:
     const [good, auction] = await Promise.all([
       Good.findOne({
         where: { id: req.params.id },
@@ -113,6 +114,7 @@ router.get("/good/:id", isLoggedIn, async (req, res, next) => {
 
 router.post("/good/:id/bid", isLoggedIn, async (req, res, next) => {
   try {
+    // 클라이언트로부터 입찰정보를 받아 저장한다
     const { bid, msg } = req.body;
     const good = await Good.findOne({
       where: { id: req.params.id },
