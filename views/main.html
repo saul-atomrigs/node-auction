@@ -24,6 +24,7 @@
     {% endfor %}
   </table>
 </div>
+<!-- EventSource 폴리필 추가하여 엣지 브라우저에서도 서버센트 이벤트 사용 가능하게 함 -->
 <script src="https://unpkg.com/event-source-polyfill/src/eventsource.min.js"></script>
 <script>
   const es = new EventSource("/sse");
